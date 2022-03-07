@@ -39,7 +39,7 @@ export const TopPageView: VFC = () => {
             })}
           </div>
         </div>
-        <div className="overflow-auto w-3/12 border border-gray-200">
+        <div className="w-3/12 border border-gray-200">
           <div className="w-full dropdown">
             <label tabIndex={0} className="prose">
               <h1 className="p-4 border-b border-gray-200 hover:bg-base-300">
