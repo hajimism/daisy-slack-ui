@@ -1,7 +1,9 @@
 export type User = {
   id: number
   name: string
-  gitHubUserName?: string
+  description: string
+  img: string
+  link: string
 }
 
 export interface UserProps {
