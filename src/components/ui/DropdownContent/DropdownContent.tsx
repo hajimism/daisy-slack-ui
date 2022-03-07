@@ -7,7 +7,7 @@ export const DropdownContent: VFC = () => {
   return (
     <ul
       tabIndex={0}
-      className="top-3/4 left-2 p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+      className="top-3/4 left-2 p-2 w-96 shadow-2xl dropdown-content menu bg-base-100 rounded-box"
     >
       <div className="flex px-4 pt-4 pb-0 border-b border-gray-200 prose">
         <figure className="p-0 m-0">
@@ -35,7 +35,7 @@ export const DropdownContent: VFC = () => {
             <p>You can only access your most recent 10k messages.</p>
           </span>
           <div className="w-32 radial-progress text-info" style={style}>
-            1.2k
+            2.2k
           </div>
         </a>
       </li>
@@ -61,7 +61,7 @@ export const DropdownContent: VFC = () => {
         </label>
         <ul
           tabIndex={0}
-          className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+          className="p-2 w-96 shadow-xl dropdown-content menu bg-base-100 rounded-box"
         >
           <li>
             <a>Workspace Settings</a>
@@ -84,7 +84,7 @@ export const DropdownContent: VFC = () => {
         </label>
         <ul
           tabIndex={0}
-          className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+          className="p-2 w-96 shadow-xl dropdown-content menu bg-base-100 rounded-box"
         >
           <li>
             <a>Workflow builder</a>

@@ -58,7 +58,7 @@ export const TopPageView: VFC = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+                className="p-2 w-96 shadow-2xl dropdown-content menu bg-base-100 rounded-box"
               >
                 <li>
                   <a>Workspace Settings</a>
