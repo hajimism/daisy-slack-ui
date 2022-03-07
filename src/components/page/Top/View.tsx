@@ -1,69 +1,19 @@
 import { VFC } from "react"
 
-import { DropdownContent } from "@/components/ui/DropdownContent"
+import { PostItem } from "@/components/model/Post/PostItem"
+import { DirectMessages } from "@/components/model/User/DirectMessages"
 
-const PRIMARY_COLORS: { [key: string]: string }[] = [
-  { light: "#570df8" },
-  { dark: "#661AE6" },
-  { cupcake: "#65c3c8" },
-  { bumblebee: "#e0a82e" },
-  { emerald: "#66cc8a" },
-  { corporate: "#4b6bfb" },
-  { synthwave: "#e779c1" },
-  { retro: "#ef9995" },
-  { cyberpunk: "#ff7598" },
-  { valentine: "#e96d7b" },
-  { halloween: "#f28c18" },
-  { garden: "#5c7f67" },
-  { forest: "#1eb854" },
-  { aqua: "#09ecf3" },
-  { lofi: "#0D0D0D" },
-  { pastel: "#d1c1d7" },
-  { fantasy: "#6e0b75" },
-  { wireframe: "#b8b8b8" },
-  { black: "#343232" },
-  { luxury: "#ffffff" },
-  { dracula: "#ff79c6" },
-  { cmyk: "#45AEEE" },
-  { autumn: "#8C0327" },
-  { business: "#1C4E80" },
-  { acid: "#FF00F4" },
-  { lemonade: "#519903" },
-  { night: "#38bdf8" },
-  { coffee: "#DB924B" },
-  { winter: "#047AFF" },
-]
+import { DropdownContent } from "@/components/ui/DropdownContent"
+import { Navbar } from "@/components/ui/Navbar"
+
+import { PRIMARY_COLORS, CANNELS } from "@/mocks/data"
+import { mockPost } from "@/mocks/Post"
+import { mockUserList } from "@/mocks/User"
 
 export const TopPageView: VFC = () => {
   return (
     <main className="flex flex-col justify-center items-center h-screen">
-      <div className="flex justify-center navbar bg-primary">
-        <div className="form-control">
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Search…"
-              className="input input-bordered"
-            />
-            <button className="btn btn-square">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
+      <Navbar />
       <div className="flex grow w-full">
         <div
           className="overflow-y-scroll w-1/12"
@@ -78,7 +28,7 @@ export const TopPageView: VFC = () => {
                   key={key}
                   className="mt-2 w-20 h-20 mask mask-squircle"
                   style={{ backgroundColor: item[key] }}
-                ></div>
+                />
               )
             })}
           </div>
@@ -86,14 +36,76 @@ export const TopPageView: VFC = () => {
         <div className="w-3/12 border border-gray-200">
           <div className="w-full dropdown">
             <label tabIndex={0} className="prose">
-              <h1 className="p-4 border-b border-gray-200 hover:bg-base-200 ">
+              <h1 className="p-4 border-b border-gray-200 hover:bg-base-300">
                 daisyUI
               </h1>
             </label>
             <DropdownContent />
           </div>
+          <div className="prose">
+            <div className="py-2 px-4 cursor-pointer hover:bg-base-300">
+              Threads
+            </div>
+            <div className="py-2 px-4 cursor-pointer hover:bg-base-300">
+              Mentions & reactions
+            </div>
+            <div className="py-2 px-4 cursor-pointer hover:bg-base-300">
+              Slack content
+            </div>
+            <div className="w-full dropdown">
+              <label tabIndex={0} className="w-full">
+                <div className="py-2 px-4 w-full cursor-pointer">More</div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+              >
+                <li>
+                  <a>Workspace Settings</a>
+                </li>
+                <li className="border-b border-gray-200">
+                  <a>Customize</a>
+                </li>
+                <li>
+                  <a>Manage members</a>
+                </li>
+                <li>
+                  <a>Manage apps</a>
+                </li>
+              </ul>
+            </div>
+            <h3 className="px-4 cursor-default">Channels</h3>
+            {CANNELS.map((channel, i) => {
+              const color =
+                i === 0 ? "bg-primary text-white" : "hover:bg-base-300"
+
+              return (
+                <div
+                  key={channel}
+                  className={`py-2 px-4 cursor-pointer ${color}`}
+                >{`# ${channel}`}</div>
+              )
+            })}
+            <DirectMessages users={mockUserList} />
+          </div>
         </div>
-        <div className="w-8/12">hoge</div>
+        <div className="w-8/12">
+          <div className="prose">
+            <h2 className="p-4 py-5 w-full border-b border-gray-200">
+              # general
+            </h2>
+          </div>
+          <div>
+            <div
+              className="overflow-y-scroll"
+              style={{ height: "calc(100vh - 10rem)" }}
+            >
+              {[...Array(10)].map((_, i) => {
+                return <PostItem key={i} post={mockPost} />
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   )
