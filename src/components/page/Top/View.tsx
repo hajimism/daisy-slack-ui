@@ -6,39 +6,20 @@ import { DirectMessages } from "@/components/model/User/DirectMessages"
 
 import { DropdownContent } from "@/components/ui/DropdownContent"
 import { Navbar } from "@/components/ui/Navbar"
+import { Sidebar } from "@/components/ui/Sidebar"
 
-import { PRIMARY_COLORS, CANNELS } from "@/mocks/data"
+import { CANNELS } from "@/mocks/data"
 import { mockPost } from "@/mocks/Post"
 import { mockUserList } from "@/mocks/User"
 
 export const TopPageView: VFC = () => {
-  const { theme, setTheme } = useTheme()
+  const { theme } = useTheme()
 
   return (
     <main className="flex flex-col justify-center items-center h-screen">
       <Navbar />
       <div className="flex grow w-full">
-        <div
-          className="overflow-y-scroll w-1/12"
-          style={{ height: "calc(100vh - 5rem)" }}
-        >
-          <div className="flex flex-col items-center w-full">
-            {PRIMARY_COLORS.map((item) => {
-              const key = Object.keys(item)[0]
-              const changeTheme = () => setTheme(key)
-              return (
-                <div
-                  key={key}
-                  className="flex justify-center items-center mt-2 w-20 h-20 mask mask-squircle"
-                  style={{ backgroundColor: item[key] }}
-                  onClick={changeTheme}
-                >
-                  <span className="text-black bg-white rounded-lg">{key}</span>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+        <Sidebar />
         <div className="w-3/12 border border-gray-200">
           <div className="w-full dropdown">
             <label tabIndex={0} className="prose">
