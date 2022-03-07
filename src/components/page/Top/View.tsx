@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes"
 import { VFC } from "react"
 
 import { PostItem } from "@/components/model/Post/PostItem"
@@ -11,6 +12,8 @@ import { mockPost } from "@/mocks/Post"
 import { mockUserList } from "@/mocks/User"
 
 export const TopPageView: VFC = () => {
+  const { theme, setTheme } = useTheme()
+
   return (
     <main className="flex flex-col justify-center items-center h-screen">
       <Navbar />
@@ -22,13 +25,16 @@ export const TopPageView: VFC = () => {
           <div className="flex flex-col items-center w-full">
             {PRIMARY_COLORS.map((item) => {
               const key = Object.keys(item)[0]
-
+              const changeTheme = () => setTheme(key)
               return (
                 <div
                   key={key}
-                  className="mt-2 w-20 h-20 mask mask-squircle"
+                  className="flex justify-center items-center mt-2 w-20 h-20 mask mask-squircle"
                   style={{ backgroundColor: item[key] }}
-                />
+                  onClick={changeTheme}
+                >
+                  <span className="text-black bg-white rounded-lg">{key}</span>
+                </div>
               )
             })}
           </div>
@@ -91,9 +97,11 @@ export const TopPageView: VFC = () => {
         </div>
         <div className="w-8/12">
           <div className="prose">
-            <h2 className="p-4 py-5 w-full border-b border-gray-200">
-              # general
-            </h2>
+            <h2 className="p-4 py-5 w-full"># general</h2>
+          </div>
+          <div className="p-4 py-2 w-full border-y border-gray-200">
+            current theme is
+            <span className="pl-2 text-primary">{theme}</span>
           </div>
           <div>
             <div
