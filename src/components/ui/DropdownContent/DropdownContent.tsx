@@ -47,11 +47,15 @@ export const DropdownContent: VFC = () => {
           <a className="hover:active">Create a channel</a>
         </li>
         <li>
-          <a href="#my-modal-2" className="flex justify-between hover:active">
+          <a
+            href="#my-modal-2"
+            className="flex justify-between hover:active"
+            id="modal-opener"
+          >
             <span>Preferences</span>
             <div className="prose">
               <kbd className="kbd">⌘</kbd>
-              <kbd className="kbd">,</kbd>
+              <kbd className="kbd">/</kbd>
             </div>
           </a>
         </li>

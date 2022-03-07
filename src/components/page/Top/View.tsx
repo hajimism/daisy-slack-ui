@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes"
 import { VFC } from "react"
+import { useHotkeys } from "react-hotkeys-hook"
 
 import { PostItem } from "@/components/model/Post/PostItem"
 import { DirectMessages } from "@/components/model/User/DirectMessages"
@@ -14,6 +15,10 @@ import { mockUserList } from "@/mocks/User"
 
 export const TopPageView: VFC = () => {
   const { theme } = useTheme()
+
+  useHotkeys("command+/", () => {
+    document.getElementById("modal-opener")?.click()
+  })
 
   return (
     <main className="flex flex-col justify-center items-center h-screen">
