@@ -29,9 +29,9 @@ export const DropdownContent: VFC = () => {
         </div>
       </div>
       <li className="border-b border-gray-200">
-        <a className="hover:active ">
+        <a className="hover:active">
           <span>
-            <h3>Total messages</h3>
+            <h3 className="font-bold">Total messages</h3>
             <p>You can only access your most recent 10k messages.</p>
           </span>
           <div className="w-32 radial-progress text-info" style={style}>
@@ -46,13 +46,53 @@ export const DropdownContent: VFC = () => {
         <a className="hover:active">Create a channel</a>
       </li>
       <li>
-        <a className="hover:active">Preferences</a>
+        <a className="flex justify-between hover:active">
+          <span>Preferences</span>
+          <div className="prose">
+            <kbd className="kbd">⌘</kbd>
+            <kbd className="kbd">,</kbd>
+          </div>
+        </a>
       </li>
-      <li className="border-b border-gray-200">
-        <a className="hover:active">Setting & administration</a>
+      <li className="border-b border-gray-200 dropdown dropdown-hover dropdown-right">
+        <label tabIndex={0} className="flex justify-between hover:active">
+          <span>Setting & administration</span>
+          <span>{">"}</span>
+        </label>
+        <ul
+          tabIndex={0}
+          className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+        >
+          <li>
+            <a>Workspace Settings</a>
+          </li>
+          <li className="border-b border-gray-200">
+            <a>Customize</a>
+          </li>
+          <li>
+            <a>Manage members</a>
+          </li>
+          <li>
+            <a>Manage apps</a>
+          </li>
+        </ul>
       </li>
-      <li className="border-b border-gray-200">
-        <a className="hover:active">Tools</a>
+      <li className="border-b border-gray-200 dropdown dropdown-hover dropdown-right">
+        <label tabIndex={0} className="flex justify-between hover:active">
+          <span>Tools</span>
+          <span>{">"}</span>
+        </label>
+        <ul
+          tabIndex={0}
+          className="p-2 w-96 shadow dropdown-content menu bg-base-100 rounded-box"
+        >
+          <li>
+            <a>Workflow builder</a>
+          </li>
+          <li>
+            <a>Analytics</a>
+          </li>
+        </ul>
       </li>
       <li className="border-b border-gray-200">
         <a className="hover:active">Sign in on mobile</a>
