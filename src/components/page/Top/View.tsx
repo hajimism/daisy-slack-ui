@@ -39,7 +39,7 @@ export const TopPageView: VFC = () => {
             })}
           </div>
         </div>
-        <div className="w-3/12 border border-gray-200">
+        <div className="overflow-auto w-3/12 border border-gray-200">
           <div className="w-full dropdown">
             <label tabIndex={0} className="prose">
               <h1 className="p-4 border-b border-gray-200 hover:bg-base-300">
@@ -106,7 +106,7 @@ export const TopPageView: VFC = () => {
           <div>
             <div
               className="overflow-y-scroll"
-              style={{ height: "calc(100vh - 10rem)" }}
+              style={{ height: "calc(100vh - 12rem)" }}
             >
               {[...Array(10)].map((_, i) => {
                 return <PostItem key={i} post={mockPost} />
